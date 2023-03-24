@@ -33,7 +33,7 @@ class ViewController: UIViewController {
         tableView.delegate = self
         tableView.rowHeight = UITableView.automaticDimension
         tableView.register(UITableViewCell.self, forCellReuseIdentifier: "DefaultCell")
-        tableView.register(EventsTableViewCell.self, forCellReuseIdentifier: "EventCell")
+        tableView.register(FilesTableViewCell.self, forCellReuseIdentifier: "EventCell")
         tableView.translatesAutoresizingMaskIntoConstraints = false
         return tableView
     }()
@@ -75,11 +75,11 @@ extension ViewController: UITableViewDataSource, UITableViewDelegate {
     }
     
     func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
-        guard let cell = tableView.dequeueReusableCell(withIdentifier: "EventCell", for: indexPath) as? EventsTableViewCell else {
+        guard let cell = tableView.dequeueReusableCell(withIdentifier: "EventCell", for: indexPath) as? FilesTableViewCell else {
             let cell = tableView.dequeueReusableCell(withIdentifier: "DefaultCell", for: indexPath)
             return cell
         }
-        let viewModel = EventsTableViewCell.ViewModel(title: documents[indexPath.row])
+        let viewModel = FilesTableViewCell.ViewModel(title: documents[indexPath.row])
         cell.setup(viewModel)
 
         return cell

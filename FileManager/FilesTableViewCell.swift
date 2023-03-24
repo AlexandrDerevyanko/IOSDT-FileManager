@@ -9,7 +9,7 @@ import Foundation
 
 import UIKit
 
-class EventsTableViewCell: UITableViewCell {
+class FilesTableViewCell: UITableViewCell {
     
     struct ViewModel {
         var title: String
