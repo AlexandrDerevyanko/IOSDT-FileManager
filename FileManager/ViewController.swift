@@ -11,7 +11,6 @@ import SnapKit
 class ViewController: UIViewController {
     
     var path: String = NSSearchPathForDirectoriesInDomains(.documentDirectory, .userDomainMask, true)[0]
-    
     var documents: [String] {
         do {
             return try FileManager.default.contentsOfDirectory(atPath: path)
@@ -20,6 +19,13 @@ class ViewController: UIViewController {
         }
         return []
     }
+    
+    lazy var picker: UIImagePickerController = {
+        let picker = UIImagePickerController()
+        picker.allowsEditing = true
+        picker.delegate = self
+        return picker
+    }()
     
     private lazy var tableView: UITableView = {
         let tableView = UITableView(frame: .zero, style: .grouped)
@@ -58,10 +64,7 @@ class ViewController: UIViewController {
     
     @objc
     private func addPhotoButtonPressed() {
-        let picker = UIImagePickerController()
-            picker.allowsEditing = true
-            picker.delegate = self
-            present(picker, animated: true)
+        present(picker, animated: true)
     }
         
 }
