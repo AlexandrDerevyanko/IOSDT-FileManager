@@ -5,16 +5,23 @@
 //  Created by Aleksandr Derevyanko on 23.03.2023.
 //
 
-import Foundation
-
 import UIKit
 
 class FilesTableViewCell: UITableViewCell {
     
     struct ViewModel {
         var title: String
-        var description: String?
+        var description: String
+        var image: UIImage?
     }
+    
+    private let image: UIImageView = {
+        let image = UIImageView()
+        image.clipsToBounds = true
+        image.layer.cornerRadius = 15
+        image.translatesAutoresizingMaskIntoConstraints = false
+        return image
+    }()
     
     private let titleLabel: UILabel = {
         let label = UILabel()
@@ -42,11 +49,13 @@ class FilesTableViewCell: UITableViewCell {
     func setup(_ viewModel: ViewModel) {
         titleLabel.text = viewModel.title
         descriptionLabel.text = viewModel.description
+        image.image = viewModel.image
     }
     
     private func setupUI() {
         addSubview(titleLabel)
         addSubview(descriptionLabel)
+        addSubview(image)
         setupConstraints()
     }
     
@@ -56,13 +65,22 @@ class FilesTableViewCell: UITableViewCell {
             make.top.equalTo(16)
             make.left.equalTo(16)
             make.right.equalTo(-16)
-            make.bottom.equalTo(descriptionLabel).offset(-16)
         }
+        
         descriptionLabel.snp.makeConstraints { make in
-            make.top.equalTo(titleLabel).offset(16)
+            make.top.equalTo(titleLabel.snp.bottom).offset(16)
             make.left.equalTo(16)
             make.right.equalTo(-16)
             make.bottom.equalTo(-16)
+        }
+        
+        image.snp.makeConstraints { make in
+            make.centerX.equalTo(snp.centerX)
+            make.centerY.equalTo(snp.centerY)
+            make.top.equalTo(16)
+            make.bottom.equalTo(-16)
+            make.height.equalTo(50)
+            make.width.equalTo(50)
         }
         
     }
