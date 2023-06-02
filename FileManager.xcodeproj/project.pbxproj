@@ -20,9 +20,12 @@
 		FF6741DF29CDE334006A73F0 /* Errors.swift in Sources */ = {isa = PBXBuildFile; fileRef = FF6741DE29CDE334006A73F0 /* Errors.swift */; };
 		FF6741E129CE0DE6006A73F0 /* FileService.swift in Sources */ = {isa = PBXBuildFile; fileRef = FF6741E029CE0DE6006A73F0 /* FileService.swift */; };
 		FF6741E329CE1BC3006A73F0 /* LogInViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = FF6741E229CE1BC3006A73F0 /* LogInViewController.swift */; };
+		FF6D95852A2A870600ED08AA /* Picker.swift in Sources */ = {isa = PBXBuildFile; fileRef = FF6D95842A2A870600ED08AA /* Picker.swift */; };
+		FF6D95872A2A872D00ED08AA /* AlertPicker.swift in Sources */ = {isa = PBXBuildFile; fileRef = FF6D95862A2A872D00ED08AA /* AlertPicker.swift */; };
+		FF6D95892A2A874D00ED08AA /* Authorization.swift in Sources */ = {isa = PBXBuildFile; fileRef = FF6D95882A2A874D00ED08AA /* Authorization.swift */; };
 		FF83961629C4C62000BA40D9 /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = FF83961529C4C62000BA40D9 /* AppDelegate.swift */; };
 		FF83961829C4C62000BA40D9 /* SceneDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = FF83961729C4C62000BA40D9 /* SceneDelegate.swift */; };
-		FF83961A29C4C62000BA40D9 /* FilesViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = FF83961929C4C62000BA40D9 /* FilesViewController.swift */; };
+		FF83961A29C4C62000BA40D9 /* DocumentsViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = FF83961929C4C62000BA40D9 /* DocumentsViewController.swift */; };
 		FF83961F29C4C62100BA40D9 /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = FF83961E29C4C62100BA40D9 /* Assets.xcassets */; };
 		FF83962229C4C62100BA40D9 /* LaunchScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = FF83962029C4C62100BA40D9 /* LaunchScreen.storyboard */; };
 /* End PBXBuildFile section */
@@ -38,10 +41,13 @@
 		FF6741DE29CDE334006A73F0 /* Errors.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Errors.swift; sourceTree = "<group>"; };
 		FF6741E029CE0DE6006A73F0 /* FileService.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FileService.swift; sourceTree = "<group>"; };
 		FF6741E229CE1BC3006A73F0 /* LogInViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LogInViewController.swift; sourceTree = "<group>"; };
+		FF6D95842A2A870600ED08AA /* Picker.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Picker.swift; sourceTree = "<group>"; };
+		FF6D95862A2A872D00ED08AA /* AlertPicker.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AlertPicker.swift; sourceTree = "<group>"; };
+		FF6D95882A2A874D00ED08AA /* Authorization.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Authorization.swift; sourceTree = "<group>"; };
 		FF83961229C4C62000BA40D9 /* FileManager.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = FileManager.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		FF83961529C4C62000BA40D9 /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
 		FF83961729C4C62000BA40D9 /* SceneDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SceneDelegate.swift; sourceTree = "<group>"; };
-		FF83961929C4C62000BA40D9 /* FilesViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FilesViewController.swift; sourceTree = "<group>"; };
+		FF83961929C4C62000BA40D9 /* DocumentsViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DocumentsViewController.swift; sourceTree = "<group>"; };
 		FF83961E29C4C62100BA40D9 /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Assets.xcassets; sourceTree = "<group>"; };
 		FF83962129C4C62100BA40D9 /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/LaunchScreen.storyboard; sourceTree = "<group>"; };
 		FF83962329C4C62100BA40D9 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
@@ -61,6 +67,15 @@
 /* End PBXFrameworksBuildPhase section */
 
 /* Begin PBXGroup section */
+		FF6D95832A2A86FB00ED08AA /* Pickers */ = {
+			isa = PBXGroup;
+			children = (
+				FF6D95842A2A870600ED08AA /* Picker.swift */,
+				FF6D95862A2A872D00ED08AA /* AlertPicker.swift */,
+			);
+			path = Pickers;
+			sourceTree = "<group>";
+		};
 		FF83960929C4C62000BA40D9 = {
 			isa = PBXGroup;
 			children = (
@@ -82,17 +97,19 @@
 			children = (
 				FF83961529C4C62000BA40D9 /* AppDelegate.swift */,
 				FF83961729C4C62000BA40D9 /* SceneDelegate.swift */,
-				FF83961929C4C62000BA40D9 /* FilesViewController.swift */,
+				FF83961929C4C62000BA40D9 /* DocumentsViewController.swift */,
 				FF45931B29CC88AC006A88F8 /* FilesTableViewCell.swift */,
 				FF6741E229CE1BC3006A73F0 /* LogInViewController.swift */,
 				FF5F21FD29D19F200035F975 /* SettingsViewController.swift */,
 				FF5F21FF29D19F910035F975 /* FirstSectionSettingsTableViewCell.swift */,
 				FF5F220529D1B87D0035F975 /* SecondSectionSettingsTableViewCell.swift */,
 				FF45931D29CC8942006A88F8 /* Custom.swift */,
+				FF6D95832A2A86FB00ED08AA /* Pickers */,
 				FF5F21FB29D19BDE0035F975 /* TabBar.swift */,
 				FF6741DE29CDE334006A73F0 /* Errors.swift */,
 				FF6741E029CE0DE6006A73F0 /* FileService.swift */,
 				FF5F220329D1A75C0035F975 /* SettingsData.swift */,
+				FF6D95882A2A874D00ED08AA /* Authorization.swift */,
 				FF83961E29C4C62100BA40D9 /* Assets.xcassets */,
 				FF83962029C4C62100BA40D9 /* LaunchScreen.storyboard */,
 				FF83962329C4C62100BA40D9 /* Info.plist */,
@@ -183,16 +200,19 @@
 				FF5F21FC29D19BDE0035F975 /* TabBar.swift in Sources */,
 				FF5F220629D1B87D0035F975 /* SecondSectionSettingsTableViewCell.swift in Sources */,
 				FF45931C29CC88AC006A88F8 /* FilesTableViewCell.swift in Sources */,
+				FF6D95872A2A872D00ED08AA /* AlertPicker.swift in Sources */,
 				FF6741E129CE0DE6006A73F0 /* FileService.swift in Sources */,
 				FF5F21FE29D19F200035F975 /* SettingsViewController.swift in Sources */,
-				FF83961A29C4C62000BA40D9 /* FilesViewController.swift in Sources */,
+				FF83961A29C4C62000BA40D9 /* DocumentsViewController.swift in Sources */,
 				FF83961629C4C62000BA40D9 /* AppDelegate.swift in Sources */,
 				FF5F220029D19F910035F975 /* FirstSectionSettingsTableViewCell.swift in Sources */,
 				FF6741E329CE1BC3006A73F0 /* LogInViewController.swift in Sources */,
+				FF6D95852A2A870600ED08AA /* Picker.swift in Sources */,
 				FF5F220429D1A75C0035F975 /* SettingsData.swift in Sources */,
 				FF83961829C4C62000BA40D9 /* SceneDelegate.swift in Sources */,
 				FF6741DF29CDE334006A73F0 /* Errors.swift in Sources */,
 				FF45931E29CC8942006A88F8 /* Custom.swift in Sources */,
+				FF6D95892A2A874D00ED08AA /* Authorization.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};

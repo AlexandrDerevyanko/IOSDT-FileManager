@@ -8,78 +8,28 @@
 import UIKit
 import KeychainSwift
 
-class Picker {
-    static let defaultPicker = Picker()
-    
-    func getFolder(showPickerIn viewController: UIViewController, title: String, message: String, completion: ((_ text: String?, _ errors: Errors?) -> ())?) {
-        let alertController =  UIAlertController(title: title, message: message, preferredStyle: .alert)
-        alertController.addTextField()
-        
-        let alertOK = UIAlertAction(title: "Ok", style: .default) { alert in
-            if let text = alertController.textFields?[0].text, text != "" {
-                completion?(text, nil)
-            } else {
-                completion?(nil, .nameIsEmpty)
-            }
-        }
-        
-        let alertCancel = UIAlertAction(title: "Cancel", style: .cancel)
-        
-        alertController.addAction(alertOK)
-        alertController.addAction(alertCancel)
-        viewController.present(alertController, animated: true)
-    }
-    
-    func getImage(showPickerIn viewController: UIViewController, title: String, message: String, imageData: Data?, completion: ((_ text1: String?, _ imageData: Data?, _ errors: Errors?) -> ())?) {
-        let alertController =  UIAlertController(title: title, message: message, preferredStyle: .alert)
-        alertController.addTextField()
-        
-        let alertOK = UIAlertAction(title: "Ok", style: .default) { alert in
-            if let text = alertController.textFields?[0].text, text != "" {
-                if let imageData = imageData {
-                    completion?(text, imageData, nil)
-                } else {
-                    completion?(nil, nil, .unexpected)
-                }
-            } else {
-                completion?(nil, nil, .nameIsEmpty)
-            }
-        }
-        
-        let alertCancel = UIAlertAction(title: "Cancel", style: .cancel)
-        
-        alertController.addAction(alertOK)
-        alertController.addAction(alertCancel)
-        viewController.present(alertController, animated: true)
-    }
-    
-    func errorsAlert(showIn viewController: UIViewController, error: Errors) {
-        let alertController = UIAlertController(title: "Ошибка", message: error.localizedDescription, preferredStyle: .alert)
-        
-        let alertOK = UIAlertAction(title: "Ok", style: .default)
-        
-        alertController.addAction(alertOK)
-        viewController.present(alertController, animated: true)
-    }
-}
-
-class Alert {
-    static let defaultAlert = Alert()
-    
-    func errors(showIn viewController: UIViewController, error: Errors) {
-        let alertController = UIAlertController(title: "Ошибка", message: error.localizedDescription, preferredStyle: .alert)
-        
-        let alertOK = UIAlertAction(title: "Ok", style: .default)
-        
-        alertController.addAction(alertOK)
-        viewController.present(alertController, animated: true)
-    }
-}
-
 final class CustomButton: UIButton {
     typealias Action = () -> Void
     
     var buttonAction: Action
+    override var isHighlighted: Bool {
+        didSet {
+            if (isHighlighted) {
+                alpha = 0.8
+            } else {
+                alpha = 1
+            }
+        }
+    }
+    override var isSelected: Bool {
+        didSet {
+            if (isSelected) {
+                alpha = 0.8
+            } else {
+                alpha = 1
+            }
+        }
+    }
     
     init(title: String, titleColor: UIColor = .black, bgColor: UIColor, hidden: Bool = false, action: @escaping Action) {
         buttonAction = action
@@ -107,19 +57,4 @@ final class CustomButton: UIButton {
     }
 }
 
-class Autorization {
-    static let defaultAutorization = Autorization()
-    
-    func addPassword(password: String) {
-        KeychainSwift().set(password, forKey: "Password")
-    }
-    
-    func checkPassword(passwordToCheck: String) -> Bool {
-        let password: String? = KeychainSwift().get("Password")
-        if password == passwordToCheck {
-            return true
-        } else {
-            return false
-        }
-    }
-}
+

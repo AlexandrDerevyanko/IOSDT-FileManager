@@ -38,7 +38,8 @@ class LogInViewController: UIViewController {
     
     override func viewDidLoad() {
         super.viewDidLoad()
-        navigationController?.tabBarController?.tabBar.isHidden = true
+//        navigationController?.tabBarController?.tabBar.isHidden = true
+        title = "Авторизация"
         if isResizeble {
             checkPassword()
             self.isResizeble = false
@@ -109,38 +110,38 @@ class LogInViewController: UIViewController {
     private func createPasswordButtonPressed() {
         if let text = self.textField.text, text != "" {
             if text.count < 4 {
-                Alert.defaultAlert.errors(showIn: self, error: .weakPassword)
+                AlertPicker.defaultPicker.showErrors(showIn: self, error: .weakPassword)
             } else {
                 self.password = text
-                self.textField.text = ""
+                self.textField.text = "123456"
                 self.createPasswordButton.isHidden = true
                 self.repeatPasswordButton.isHidden = false
             }
         } else {
-            Alert.defaultAlert.errors(showIn: self, error: .nameIsEmpty)
+            AlertPicker.defaultPicker.showErrors(showIn: self, error: .nameIsEmpty)
         }
     }
     
     private func enterPasswordButtonPressed() {
         let password = self.textField.text
-        if Autorization.defaultAutorization.checkPassword(passwordToCheck: password ?? "") {
-            let VC = FilesViewController()
+        if Authorization.defaultAutorization.checkPassword(passwordToCheck: password ?? "") {
+            let VC = DocumentsViewController()
             navigationController?.tabBarController?.tabBar.isHidden = false
             navigationController?.pushViewController(VC, animated: true)
         } else {
-            Alert.defaultAlert.errors(showIn: self, error: .invalidPassword)
+            AlertPicker.defaultPicker.showErrors(showIn: self, error: .invalidPassword)
         }
     }
     
     private func repeatPasswordButtonPressed() {
         if let text = self.textField.text, text == self.password {
-            Autorization.defaultAutorization.addPassword(password: self.password!)
-            let VC = FilesViewController()
+            Authorization.defaultAutorization.addPassword(password: self.password!)
+            let VC = DocumentsViewController()
             navigationController?.tabBarController?.tabBar.isHidden = false
             navigationController?.pushViewController(VC, animated: true)
             self.dismiss(animated: true)
         } else {
-            Alert.defaultAlert.errors(showIn: self, error: .mismatchPassword)
+            AlertPicker.defaultPicker.showErrors(showIn: self, error: .mismatchPassword)
             firstState()
         }
     }

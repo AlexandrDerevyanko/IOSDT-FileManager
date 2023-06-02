@@ -64,23 +64,20 @@ class FilesTableViewCell: UITableViewCell {
         titleLabel.snp.makeConstraints { make in
             make.top.equalTo(16)
             make.left.equalTo(16)
-            make.right.equalTo(-16)
         }
         
         descriptionLabel.snp.makeConstraints { make in
             make.top.equalTo(titleLabel.snp.bottom).offset(16)
             make.left.equalTo(16)
-            make.right.equalTo(-16)
             make.bottom.equalTo(-16)
         }
         
         image.snp.makeConstraints { make in
-            make.centerX.equalTo(snp.centerX)
-            make.centerY.equalTo(snp.centerY)
             make.top.equalTo(16)
             make.bottom.equalTo(-16)
             make.height.equalTo(50)
             make.width.equalTo(50)
+            make.right.equalTo(-16)
         }
         
     }

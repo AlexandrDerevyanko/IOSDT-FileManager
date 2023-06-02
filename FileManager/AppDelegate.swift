@@ -13,8 +13,8 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
 
 
     func application(_ application: UIApplication, didFinishLaunchingWithOptions launchOptions: [UIApplication.LaunchOptionsKey: Any]?) -> Bool {
-        print(NSSearchPathForDirectoriesInDomains(.documentDirectory, .userDomainMask, true)[0])
-        UserDefaults.standard.set(true, forKey: "aZSort")
+//        print(NSSearchPathForDirectoriesInDomains(.documentDirectory, .userDomainMask, true)[0])
+//        UserDefaults.standard.set(true, forKey: "aZSort")
         return true
     }
 

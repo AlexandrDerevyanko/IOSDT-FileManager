@@ -8,7 +8,7 @@
 import UIKit
 import SnapKit
 
-class FilesViewController: UIViewController {
+class DocumentsViewController: UIViewController {
     
     let fileService = FileService.defaulFileService
     
@@ -50,9 +50,9 @@ class FilesViewController: UIViewController {
     }
     
     func setupButtons() {
-        let addPhotoButton = UIBarButtonItem(title: "Add photo", style: .plain, target: self, action: #selector(addPhotoButtonPressed))
+        let addPhotoButton = UIBarButtonItem(title: "Добавить фото", style: .plain, target: self, action: #selector(addPhotoButtonPressed))
         navigationItem.rightBarButtonItem = addPhotoButton
-        let addFolderButton = UIBarButtonItem(title: "Add folder", style: .plain, target: self, action: #selector(addFolderButtonPressed))
+        let addFolderButton = UIBarButtonItem(title: "Добавить папку", style: .plain, target: self, action: #selector(addFolderButtonPressed))
         navigationItem.rightBarButtonItems = [addPhotoButton, addFolderButton]
         navigationItem.setHidesBackButton(true, animated: true)
     }
@@ -63,7 +63,7 @@ class FilesViewController: UIViewController {
     }
     @objc
     private func addFolderButtonPressed() {
-        Picker.defaultPicker.getFolder(showPickerIn: self, title: "Create folder", message: "Enter folder name") { text, errors  in
+        Picker.defaultPicker.getFolder(showPickerIn: self, title: "Создание папки", message: "Введите имя папки") { text, errors  in
             if let errors = errors {
                 Picker.defaultPicker.errorsAlert(showIn: self, error: errors)
             } else {
@@ -90,7 +90,7 @@ class FilesViewController: UIViewController {
         
 }
 
-extension FilesViewController: UITableViewDataSource, UITableViewDelegate {
+extension DocumentsViewController: UITableViewDataSource, UITableViewDelegate {
     func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
         return fileService.documents.count
     }
@@ -108,10 +108,10 @@ extension FilesViewController: UITableViewDataSource, UITableViewDelegate {
             var objcBool: ObjCBool = false
             FileManager.default.fileExists(atPath: fileService.path + "/" + fileService.documents[indexPath.row], isDirectory: &objcBool)
             if objcBool.boolValue {
-                viewModel.description = "Folder"
+                viewModel.description = "Папка"
                 cell.accessoryType = .disclosureIndicator
             } else {
-                viewModel.description = "File"
+                viewModel.description = "Файл"
                 viewModel.image = UIImage(contentsOfFile: data) ?? UIImage()
                 cell.accessoryType = .none
             }
@@ -122,10 +122,10 @@ extension FilesViewController: UITableViewDataSource, UITableViewDelegate {
             var objcBool: ObjCBool = false
             FileManager.default.fileExists(atPath: fileService.path + "/" + fileService.documents[indexPath.row], isDirectory: &objcBool)
             if objcBool.boolValue {
-                viewModel.description = "Folder"
+                viewModel.description = "Папка"
                 cell.accessoryType = .disclosureIndicator
             } else {
-                viewModel.description = "File"
+                viewModel.description = "Файл"
                 viewModel.image = UIImage(contentsOfFile: data) ?? UIImage()
                 cell.accessoryType = .none
             }
@@ -143,7 +143,7 @@ extension FilesViewController: UITableViewDataSource, UITableViewDelegate {
         var objcBool: ObjCBool = false
         FileManager.default.fileExists(atPath: fileService.path + "/" + fileService.documents[indexPath.row], isDirectory: &objcBool)
         if objcBool.boolValue {
-            let newVC = FilesViewController()
+            let newVC = DocumentsViewController()
             newVC.fileService.path = selectedPath
             navigationController?.pushViewController(newVC, animated: true)
         }
@@ -169,14 +169,14 @@ extension FilesViewController: UITableViewDataSource, UITableViewDelegate {
     
 }
 
-extension FilesViewController: UIImagePickerControllerDelegate, UINavigationControllerDelegate {
+extension DocumentsViewController: UIImagePickerControllerDelegate, UINavigationControllerDelegate {
     
     func imagePickerController(_ picker: UIImagePickerController, didFinishPickingMediaWithInfo info: [UIImagePickerController.InfoKey : Any]) {
         guard let image = info[.editedImage] as? UIImage else { return }
 
         let imageData = image.pngData()
         self.dismiss(animated: true)
-        Picker.defaultPicker.getImage(showPickerIn: self, title: "Enter image title", message: "", imageData: imageData) { text, imageData, errors in
+        Picker.defaultPicker.getImage(showPickerIn: self, title: "Введите название фото", message: "", imageData: imageData) { text, imageData, errors in
             if let errors = errors {
                 Picker.defaultPicker.errorsAlert(showIn: self, error: errors)
             } else {
