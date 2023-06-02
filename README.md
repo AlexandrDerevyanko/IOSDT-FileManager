@@ -1,4 +1,4 @@
-![](https://github.com/AlexandrDerevyanko/IOSDT-FileManager/blob/main/screen.png)
+![](https://github.com/AlexandrDerevyanko/IOSDT-FileManager/blob/main/Screen.png)
 
 ## Приложение для отображения и сортировки файлов
 
