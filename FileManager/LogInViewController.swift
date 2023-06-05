@@ -20,19 +20,20 @@ class LogInViewController: UIViewController {
         texField.backgroundColor = .white
         texField.layer.cornerRadius = 15
         texField.text = "123456"
+        texField.isSecureTextEntry = true
         texField.translatesAutoresizingMaskIntoConstraints = false
         return texField
     }()
     
-    private lazy var createPasswordButton = CustomButton(title: "Создать пароль", bgColor: .cyan) {
+    private lazy var createPasswordButton = CustomButton(title: "Создать пароль", bgColor: .blue) {
         self.createPasswordButtonPressed()
     }
     
-    private lazy var enterPasswordButton = CustomButton(title: "Введите пароль", bgColor: .cyan) {
+    private lazy var enterPasswordButton = CustomButton(title: "Введите пароль", bgColor: .blue) {
         self.enterPasswordButtonPressed()
     }
     
-    private lazy var repeatPasswordButton = CustomButton(title: "Повторите пароль", bgColor: .cyan) {
+    private lazy var repeatPasswordButton = CustomButton(title: "Повторите пароль", bgColor: .blue) {
         self.repeatPasswordButtonPressed()
     }
     

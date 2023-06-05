@@ -31,7 +31,7 @@ final class CustomButton: UIButton {
         }
     }
     
-    init(title: String, titleColor: UIColor = .black, bgColor: UIColor, hidden: Bool = false, action: @escaping Action) {
+    init(title: String, titleColor: UIColor = .white, bgColor: UIColor, hidden: Bool = false, action: @escaping Action) {
         buttonAction = action
         super.init(frame: .zero)
         setTitle(title, for: .normal)
